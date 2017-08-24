@@ -5,7 +5,7 @@ package com.tripty.triptybeta.modules.login;
  */
 
 interface LogInInteractorInput {
-    public void logInUsernameAndPassword(String username, String Password);
+    public void validateUsernameAndPassword(String username, String Password);
 }
 
 interface LogInInteractorOutput {

@@ -10,11 +10,15 @@ import java.util.ArrayList;
  */
 
 public class DataStoreArray implements DataStoreInterface{
+
     @Override
-    public void retrieveListByUserNameAndPassword(String username, String password, CallBackUtilityInterface callback) {
-        ArrayList<Account> accounts = new ArrayList<>();
-        accounts.add(new Account().MakeAccount("Sample", "Sample"));
-        accounts.add(new Account().MakeAccount("Sample1", "Sample1"));
-        callback.returnCompleteWithResults(new ArrayList<Object>(accounts), null);
+    public void retrieveListByModelName(Class model, DataStoreCallBackInterface callback) {
+        ArrayList<Object> objects = new ArrayList<>();
+        // overwrite
+        if (model.equals(Account.class)) {
+            objects.add(new Account().MakeAccount("Sample", "Sample"));
+            objects.add(new Account().MakeAccount("Sample1", "Sample1"));
+        }
+        callback.returnCompleteWithResults(objects, null);
     }
 }

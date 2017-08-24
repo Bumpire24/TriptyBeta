@@ -13,22 +13,16 @@ public class LogInInteractor implements LogInInteractorInput{
     public LogInInteractorOutput output;
 
     @Override
-    public void logInUsernameAndPassword(String username, String Password) {
-        logInService.retrieveListByUserNameAndPassword(username, Password, new CallBackUtilityInterface(){
+    public void validateUsernameAndPassword(String username, String Password) {
+        logInService.retrieveAccountByUsernameandPassword(username, Password, new LogInServiceInterfaceCallBack() {
             @Override
-            public void returnComplete() {
-
-            }
-
-            @Override
-            public void returnCompleteWithResults(ArrayList<Object> objects, Error e) {
+            public void callBackWithResults(String Message, Error e) {
                 if (e != null) {
                     output.showMessage(e.getMessage().toString());
                 } else {
-                    output.showMessage("Success!");
+                    output.showMessage(Message);
                 }
             }
-
         });
     }
 }

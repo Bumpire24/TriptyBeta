@@ -9,7 +9,7 @@ public class LogInPresenter implements  LogInInteractorOutput{
     LogInViewInterface view;
 
     public void logInUsernameAndPassword(String username, String password) {
-        interactorInput.logInUsernameAndPassword(username, password);
+        interactorInput.validateUsernameAndPassword(username, password);
     }
 
     @Override

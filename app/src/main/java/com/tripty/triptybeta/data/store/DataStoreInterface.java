@@ -2,10 +2,12 @@ package com.tripty.triptybeta.data.store;
 
 import com.tripty.triptybeta.utility.CallBackUtilityInterface;
 
+import java.util.ArrayList;
+
 /**
  * Created by miguelfontamillas on 18/08/2017.
  */
 
 public interface DataStoreInterface {
-    void retrieveListByUserNameAndPassword(String username, String password, CallBackUtilityInterface callback);
+    public void retrieveListByModelName(Class model, DataStoreCallBackInterface callback);
 }

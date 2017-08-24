@@ -8,6 +8,6 @@ import java.util.Objects;
  */
 
 public interface CallBackUtilityInterface {
-    public void returnComplete();
+    public void returnCompleteWithResults(ArrayList<Object> objects);
     public void returnCompleteWithResults(ArrayList<Object> objects, Error e);
 }
