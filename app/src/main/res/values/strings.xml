@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TriptyBeta</string>
+    <string name="login_hint_username">email</string>
+    <string name="login_hint_password">password</string>
+    <string name="login_button_login">Sign-In</string>
+    <string name="login_button_register">Register</string>
 </resources>

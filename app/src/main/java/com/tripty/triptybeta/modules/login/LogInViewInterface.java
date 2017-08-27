@@ -6,4 +6,5 @@ package com.tripty.triptybeta.modules.login;
 
 public interface LogInViewInterface {
     public void showMessage(String message);
+    public void clearPasswordTextBox();
 }

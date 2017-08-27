@@ -1,9 +1,8 @@
 package com.tripty.triptybeta.modules.login;
 
 import com.tripty.triptybeta.data.model.Account;
-import com.tripty.triptybeta.data.store.DataStoreCallBackInterface;
 import com.tripty.triptybeta.data.store.DataStoreInterface;
-import com.tripty.triptybeta.utility.CallBackUtilityInterface;
+import com.tripty.triptybeta.data.store.DataStoreCallBackRetrieveInterface;
 
 import java.util.ArrayList;
 
@@ -14,22 +13,27 @@ import java.util.ArrayList;
 public class LogInService {
     public DataStoreInterface dataStore;
 
-    public void retrieveAccountByUsernameandPassword(final String username, final String password, final LogInServiceInterfaceCallBack callback) {
-        dataStore.retrieveListByModelName(Account.class, new DataStoreCallBackInterface() {
+    public void retrieveAccountByUsername(final String username, final LogInServiceInterfaceCallBack callback) {
+        dataStore.retrieveListByModelName(Account.class, new DataStoreCallBackRetrieveInterface() {
             @Override
             public void returnCompleteWithResults(ArrayList<Object> objects, Error e) {
                 if (e == null) {
                     // find account
+                    boolean foundAccount = false;
                     for (Object object : objects) {
                         Account account = (Account)object;
-                        if (account.username.equals(username) && account.password.equals(password)) {
-                            callback.callBackWithResults("Success!", null);
+                        if (account.username.equals(username)) {
+                            callback.callBackWithResults(account, null);
+                            foundAccount = true;
                             break;
                         }
                     }
-                    callback.callBackWithResults("Account not found", new Error("Account not found"));
+
+                    if (!foundAccount) {
+                        callback.callBackWithResults(null, new Error("Account not found!"));
+                    }
                 } else {
-                    callback.callBackWithResults("Something happened", new Error("Something happened"));
+                    callback.callBackWithResults(null, new Error("Something happened"));
                 }
             }
         });

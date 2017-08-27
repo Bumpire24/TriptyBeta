@@ -7,7 +7,6 @@ import android.os.Bundle;
 import com.tripty.triptybeta.modules.login.LogInActivity;
 
 public class MainActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
